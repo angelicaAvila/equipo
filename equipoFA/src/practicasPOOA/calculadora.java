@@ -56,7 +56,7 @@ public class calculadora extends JFrame {
 		setTitle("CALCULADORA");
 		setForeground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 349, 350);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.LIGHT_GRAY);
 		contentPane.setBackground(Color.LIGHT_GRAY);
@@ -365,7 +365,7 @@ public class calculadora extends JFrame {
 			}
 		});
 		btnSigno.setBackground(new Color(32, 178, 170));
-		btnSigno.setForeground(new Color(255, 255, 255));
+		btnSigno.setForeground(Color.WHITE);
 		btnSigno.setFont(new Font("Arial", Font.PLAIN, 20));
 		panel_1.add(btnSigno);
 		
@@ -374,9 +374,9 @@ public class calculadora extends JFrame {
 		contentPane.add(panel_2, BorderLayout.NORTH);
 		
 		pantalla = new JTextField();
-		pantalla.setFont(new Font("Arial", Font.PLAIN, 24));
+		pantalla.setFont(new Font("Arial", Font.PLAIN, 36));
 		panel_2.add(pantalla);
-		pantalla.setColumns(20);
+		pantalla.setColumns(10);
 		
 		 
 	}
