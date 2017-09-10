@@ -55,7 +55,7 @@ public class gato extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 375, 416);
 		contentPane = new JPanel();
-		contentPane.setBackground(SystemColor.inactiveCaption);
+		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -81,14 +81,14 @@ public class gato extends JFrame {
 		panel_2.add(senalTurno);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(SystemColor.inactiveCaption);
+		panel_1.setBackground(new Color(32, 178, 170));
 		panel_1.setBorder(new EmptyBorder(3, 12, 3, 12));
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new GridLayout(3, 3, 0, 0));
 		
 		
 		JButton btn1 = new JButton("");
-		btn1.setBackground(Color.LIGHT_GRAY);
+		btn1.setBackground(new Color(211, 211, 211));
 		btn1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btn1.setIcon(senalTurno.getIcon());
@@ -119,7 +119,7 @@ public class gato extends JFrame {
 		panel_1.add(btn1);
 		
 		JButton btn2 = new JButton("");
-		btn2.setBackground(Color.LIGHT_GRAY);
+		btn2.setBackground(new Color(211, 211, 211));
 		btn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn2.setIcon(senalTurno.getIcon());
@@ -148,7 +148,7 @@ public class gato extends JFrame {
 		panel_1.add(btn2);
 		
 		JButton btn3 = new JButton("");
-		btn3.setBackground(Color.LIGHT_GRAY);
+		btn3.setBackground(new Color(211, 211, 211));
 		btn3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn3.setIcon(senalTurno.getIcon());
@@ -178,7 +178,7 @@ public class gato extends JFrame {
 		panel_1.add(btn3);
 		
 		JButton btn4 = new JButton("");
-		btn4.setBackground(Color.LIGHT_GRAY);
+		btn4.setBackground(new Color(211, 211, 211));
 		btn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn4.setIcon(senalTurno.getIcon());
@@ -208,7 +208,7 @@ public class gato extends JFrame {
 		panel_1.add(btn4);
 		
 		JButton btn5 = new JButton("");
-		btn5.setBackground(Color.LIGHT_GRAY);
+		btn5.setBackground(new Color(211, 211, 211));
 		btn5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn5.setIcon(senalTurno.getIcon());
@@ -237,7 +237,7 @@ public class gato extends JFrame {
 		panel_1.add(btn5);
 		
 		JButton btn6 = new JButton("");
-		btn6.setBackground(Color.LIGHT_GRAY);
+		btn6.setBackground(new Color(211, 211, 211));
 		btn6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn6.setIcon(senalTurno.getIcon());
@@ -266,7 +266,7 @@ public class gato extends JFrame {
 		panel_1.add(btn6);
 		
 		JButton btn7 = new JButton("");
-		btn7.setBackground(Color.LIGHT_GRAY);
+		btn7.setBackground(new Color(211, 211, 211));
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn7.setIcon(senalTurno.getIcon());
@@ -295,7 +295,7 @@ public class gato extends JFrame {
 		panel_1.add(btn7);
 		
 		JButton btn8 = new JButton("");
-		btn8.setBackground(Color.LIGHT_GRAY);
+		btn8.setBackground(new Color(211, 211, 211));
 		btn8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn8.setIcon(senalTurno.getIcon());
@@ -325,7 +325,7 @@ public class gato extends JFrame {
 		panel_1.add(btn8);
 		
 		JButton btn9 = new JButton("");
-		btn9.setBackground(Color.LIGHT_GRAY);
+		btn9.setBackground(new Color(211, 211, 211));
 		btn9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn9.setIcon(senalTurno.getIcon());
@@ -354,10 +354,12 @@ public class gato extends JFrame {
 		panel_1.add(btn9);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.inactiveCaption);
+		panel.setBackground(new Color(32, 178, 170));
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
 		btnJuegoN = new JButton("INICIAR");
+		btnJuegoN.setForeground(Color.BLACK);
+		btnJuegoN.setBackground(new Color(100, 149, 237));
 		btnJuegoN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
@@ -386,18 +388,20 @@ public class gato extends JFrame {
 			}
 		});
 		
-		btnJuegoN.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnJuegoN.setFont(new Font("Arial", Font.BOLD, 16));
 		panel.add(btnJuegoN);
 		
 		JButton btnFin = new JButton("FINALIZAR");
+		btnFin.setForeground(Color.BLACK);
+		btnFin.setBackground(new Color(255, 0, 0));
 		btnFin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int action = JOptionPane.showConfirmDialog(panel, "Seguro que deseas salir?","SALIDA",JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
+				int action = JOptionPane.showConfirmDialog(panel, "Seguro que deseas salir?", "SALIDA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,new ImageIcon(gato.class.getResource("/practicasPOOA/dejar-de-amarillo-icono-6551-48.png")));
 				if(action == JOptionPane.YES_OPTION)
 					System.exit(0);
 			}
 		});
-		btnFin.setFont(new Font("Arial", Font.PLAIN, 16));
+		btnFin.setFont(new Font("Arial", Font.BOLD, 16));
 		panel.add(btnFin);
 		
 	
