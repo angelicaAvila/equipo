@@ -28,6 +28,7 @@ public class gato extends JFrame {
 	private JPanel contentPane;
 	private int cambioLabel=0;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JButton btnJuegoN;
 	
 
 	/**
@@ -98,17 +99,22 @@ public class gato extends JFrame {
 				m[0][0] = 2;
 				if((m[0][1]==m[0][0]&&m[0][2]==m[0][0])||(m[1][0]==m[0][0]&&m[2][0]==m[0][0])||(m[1][1]==m[0][0]&&m[2][2]==m[0][0])) {
 					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+				else {	
+					if(cambioLabel == 0) {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
 				}
-				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
 				}
-				btn1.setEnabled(false);
+					btn1.setEnabled(false);
+				}
+				
 			}
+				
 		});
 		panel_1.add(btn1);
 		
@@ -119,20 +125,24 @@ public class gato extends JFrame {
 				btn2.setIcon(senalTurno.getIcon());
 				btn2.setDisabledIcon(senalTurno.getIcon());
 				if(cambioLabel==0)
-					m[1][0] = 1;
+					m[0][1] = 1;
 					else
-					m[1][0] = 2;
-				if((m[0][0]==m[1][0]&&m[2][0]==m[1][0])||(m[1][1]==m[1][0]&&m[1][2]==m[1][0])) 
-					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+					m[0][1] = 2;
+				if((m[0][0]==m[0][1]&&m[0][2]==m[0][1])||(m[1][1]==m[0][1]&&m[2][1]==m[0][1])) {
+					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][1] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
-				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+				else {	
+					if(cambioLabel == 0) {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
+					}
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
+					}
+					btn2.setEnabled(false);
 				}
-				btn2.setEnabled(false);
 			}
 		});
 		panel_1.add(btn2);
@@ -144,21 +154,25 @@ public class gato extends JFrame {
 				btn3.setIcon(senalTurno.getIcon());
 				btn3.setDisabledIcon(senalTurno.getIcon());
 				if(cambioLabel==0)
-					m[2][0] = 1;
+					m[0][2] = 1;
 					else
-					m[2][0] = 2;
-				if((m[1][0]==m[2][0]&&m[0][0]==m[2][0])||(m[2][1]==m[2][0]&&m[2][0]==m[2][2])||(m[1][2]==m[2][0]&&m[1][1]==m[2][0])) 
-					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+					m[0][2] = 2;
+				if((m[0][1]==m[0][2]&&m[0][0]==m[0][2])||(m[1][2]==m[0][2]&&m[0][2]==m[2][2])||(m[2][0]==m[0][2]&&m[1][1]==m[0][2])) { 
+					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][2] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
 				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+					if(cambioLabel == 0) {
+					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
+					}
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
+					}
+	
+					btn3.setEnabled(false);
 				}
-
-				btn3.setEnabled(false);
 			}
 		});
 		panel_1.add(btn3);
@@ -170,20 +184,25 @@ public class gato extends JFrame {
 				btn4.setIcon(senalTurno.getIcon());
 				btn4.setDisabledIcon(senalTurno.getIcon());
 				if(cambioLabel==0)
-					m[0][1] = 1;
+					m[1][0] = 1;
 					else
-					m[0][1] = 2;
-				if((m[0][0]==m[0][1]&&m[0][2]==m[0][1])||(m[1][1]==m[0][1]&&m[2][1]==m[0][1])) 
-					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+					m[1][0] = 2;
+				if((m[1][0]==m[0][0]&&m[1][0]==m[2][0])||(m[1][0]==m[1][1]&&m[1][2]==m[1][0])) {
+					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[1][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
 				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+					if(cambioLabel == 0) {
+					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
+					}
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
+					}
+					
+					btn4.setEnabled(false);
 				}
-				btn4.setEnabled(false);
 			}
 		});
 		panel_1.add(btn4);
@@ -198,17 +217,21 @@ public class gato extends JFrame {
 					m[1][1] = 1;
 					else
 					m[1][1] = 2;
-				if((m[1][0]==m[1][1]&&m[1][2]==m[1][1])||(m[0][1]==m[1][1]&&m[2][1]==m[1][1])||(m[0][0]==m[1][1]&&m[1][1]==m[2][2])) 
-					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+				if((m[1][0]==m[1][1]&&m[1][2]==m[1][1])||(m[0][1]==m[1][1]&&m[2][1]==m[1][1])||(m[0][0]==m[1][1]&&m[1][1]==m[2][2])||(m[0][2]==m[1][1]&&m[1][1]==m[2][0])) { 
+					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[1][1] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
 				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+					if(cambioLabel == 0) {
+					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
+					}
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
+					}
+					btn5.setEnabled(false);
 				}
-				btn5.setEnabled(false);
 			}
 		});
 		panel_1.add(btn5);
@@ -220,20 +243,24 @@ public class gato extends JFrame {
 				btn6.setIcon(senalTurno.getIcon());
 				btn6.setDisabledIcon(senalTurno.getIcon());
 				if(cambioLabel==0)
-					m[2][1] = 1;
+					m[1][2] = 1;
 					else
-					m[2][1] = 2;
-				if((m[2][0]==m[2][1]&&m[2][2]==m[2][1])||(m[0][1]==m[2][1]&&m[2][1]==m[1][1])) 
-					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+					m[1][2] = 2;
+				if((m[0][2]==m[1][2]&&m[1][2]==m[2][2])||(m[1][0]==m[1][2]&&m[1][1]==m[1][2])) {
+					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[1][2] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
 				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+					if(cambioLabel == 0) {
+					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
+					}
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
+					}
+					btn6.setEnabled(false);
 				}
-				btn6.setEnabled(false);
 			}
 		});
 		panel_1.add(btn6);
@@ -245,20 +272,24 @@ public class gato extends JFrame {
 				btn7.setIcon(senalTurno.getIcon());
 				btn7.setDisabledIcon(senalTurno.getIcon());
 				if(cambioLabel==0)
-					m[0][2] = 1;
+					m[2][0] = 1;
 					else
-					m[0][2] = 2;
-				if((m[0][2]==m[0][1]&&m[0][2]==m[0][0])||(m[0][2]==m[1][2]&&m[2][2]==m[0][2])||(m[0][2]==m[1][1]&&m[2][0]==m[0][2])) 
-					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[0][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+					m[2][0] = 2;
+				if((m[2][0]==m[1][0]&&m[2][0]==m[0][0])||(m[2][1]==m[2][0]&&m[2][2]==m[2][0])||(m[2][0]==m[1][1]&&m[2][0]==m[0][2])) { 
+					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[2][0] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
 				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+					if(cambioLabel == 0) {
+					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
+					}
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
+					}
+					btn7.setEnabled(false);
 				}
-				btn7.setEnabled(false);
 			}
 		});
 		panel_1.add(btn7);
@@ -269,15 +300,26 @@ public class gato extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				btn8.setIcon(senalTurno.getIcon());
 				btn8.setDisabledIcon(senalTurno.getIcon());
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+				if(cambioLabel==0)
+					m[2][1] = 1;
+					else
+					m[2][1] = 2;
+				if((m[2][0]==m[2][1]&&m[2][2]==m[2][1])||(m[0][1]==m[2][1]&&m[2][1]==m[1][1])) { 
+					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[2][1] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
 				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+					if(cambioLabel == 0) {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
+					}
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
+					}
+					btn8.setEnabled(false);
 				}
-				btn8.setEnabled(false);
+					
 			}
 		});
 		panel_1.add(btn8);
@@ -288,15 +330,25 @@ public class gato extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				btn9.setIcon(senalTurno.getIcon());
 				btn9.setDisabledIcon(senalTurno.getIcon());
-				if(cambioLabel == 0) {
-				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
-					cambioLabel = 1;
+				if(cambioLabel==0)
+					m[2][2] = 1;
+					else
+					m[2][2] = 2;
+				if((m[2][2]==m[2][1]&&m[2][2]==m[2][0])||(m[0][2]==m[2][2]&&m[2][2]==m[1][2])||(m[0][0]==m[2][2]&&m[2][2]==m[1][1])) { 
+					JOptionPane.showMessageDialog(panel_1, "Felicidades jugador "+ m[2][2] + " ganaste", "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(gato.class.getResource("/practicasPOOA/wizard1-icono-5752-48.png")));
+					btnJuegoN.doClick();
 				}
 				else {
-					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
-					cambioLabel = 0;
+					if(cambioLabel == 0) {
+					senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/circulo-azul-icono-3849-48.png")));
+						cambioLabel = 1;
+					}
+					else {
+						senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+						cambioLabel = 0;
+					}
+					btn9.setEnabled(false);
 				}
-				btn9.setEnabled(false);
 			}
 		});
 		panel_1.add(btn9);
@@ -305,10 +357,14 @@ public class gato extends JFrame {
 		panel.setBackground(SystemColor.inactiveCaption);
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
-		JButton btnJuegoN = new JButton("INICIAR");
+		btnJuegoN = new JButton("INICIAR");
 		btnJuegoN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				senalTurno.setIcon(new ImageIcon(gato.class.getResource("/practicasPOOA/caja-roja-cerca-de-icono-3782-48.png")));
+				cambioLabel=0;
+				m[0][0]=0; m[0][1]=0; m[0][2]=0;
+				m[1][0]=0; m[1][1]=0; m[1][2]=0;
+				m[2][0]=0; m[2][1]=0; m[2][2]=0;
 				btn1.setIcon(null);
 				btn1.setEnabled(true);
 				btn2.setIcon(null);
