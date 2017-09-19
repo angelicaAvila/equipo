@@ -35,6 +35,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.Font;
 
 
 public class Agenda extends JFrame {
@@ -68,51 +69,66 @@ public class Agenda extends JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	public Agenda() {
+		setFont(new Font("Arial", Font.BOLD, 14));
+		setForeground(new Color(0, 0, 128));
+		setTitle("AGENDA TELEFONICA");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 300);
+		setBounds(100, 100, 650, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.X_AXIS));
 		
 		JPanel panelDatos = new JPanel();
-		panelDatos.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0), 3), "DATOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panelDatos.setForeground(new Color(0, 0, 0));
+		panelDatos.setBackground(Color.LIGHT_GRAY);
+		panelDatos.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 255), 3, true), "DATOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		contentPane.add(panelDatos);
 		panelDatos.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panelCentro = new JPanel();
+		panelCentro.setBorder(new LineBorder(new Color(65, 105, 225), 2));
 		panelDatos.add(panelCentro, BorderLayout.CENTER);
 		panelCentro.setLayout(new GridLayout(5, 2, 0, 0));
 		
-		JLabel lblNombre = new JLabel("NOMBRE");
+		JLabel lblNombre = new JLabel("NOMBRE:");
+		lblNombre.setFont(new Font("Arial", Font.BOLD, 12));
 		panelCentro.add(lblNombre);
 		
 		txtNombre = new JTextField();
+		txtNombre.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelCentro.add(txtNombre);
 		txtNombre.setColumns(10);
 		
-		JLabel lblEdad = new JLabel("EDAD");
+		JLabel lblEdad = new JLabel("EDAD:");
+		lblEdad.setFont(new Font("Arial", Font.BOLD, 12));
 		panelCentro.add(lblEdad);
 		
 		txtEdad = new JTextField();
+		txtEdad.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelCentro.add(txtEdad);
 		txtEdad.setColumns(10);
 		
-		JLabel lblTelefono = new JLabel("TELEFONO");
+		JLabel lblTelefono = new JLabel("TELEFONO:");
+		lblTelefono.setFont(new Font("Arial", Font.BOLD, 12));
 		panelCentro.add(lblTelefono);
 		
 		txtTelefono = new JTextField();
+		txtTelefono.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelCentro.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
-		JLabel lblCorreo = new JLabel("CORREO");
+		JLabel lblCorreo = new JLabel("CORREO:");
+		lblCorreo.setFont(new Font("Arial", Font.BOLD, 12));
 		panelCentro.add(lblCorreo);
 		
 		txtCorreo = new JTextField();
+		txtCorreo.setFont(new Font("Arial", Font.PLAIN, 12));
 		panelCentro.add(txtCorreo);
 		txtCorreo.setColumns(10);
 		
-		JLabel lblGenero = new JLabel("GENERO");
+		JLabel lblGenero = new JLabel("GENERO:");
+		lblGenero.setFont(new Font("Arial", Font.BOLD, 12));
 		panelCentro.add(lblGenero);
 		
 		JPanel panelGenero = new JPanel();
@@ -121,31 +137,41 @@ public class Agenda extends JFrame {
 		ButtonGroup Group = new ButtonGroup();
 		
 		JRadioButton rdbtnHombre = new JRadioButton("HOMBRE");
+		rdbtnHombre.setBackground(new Color(173, 216, 230));
+		rdbtnHombre.setFont(new Font("Arial", Font.PLAIN, 12));
 		rdbtnHombre.setSelected(true);
 		Group.add(rdbtnHombre);
 		panelGenero.add(rdbtnHombre);
 		
 		JRadioButton rdbtnMujer = new JRadioButton("MUJER");
+		rdbtnMujer.setBackground(new Color(255, 192, 203));
+		rdbtnMujer.setFont(new Font("Arial", Font.PLAIN, 12));
 		Group.add(rdbtnMujer);
 		panelGenero.add(rdbtnMujer);
 		
 		JPanel panelBotones = new JPanel();
+		panelBotones.setBorder(new LineBorder(new Color(65, 105, 225), 2, true));
 		panelDatos.add(panelBotones, BorderLayout.SOUTH);
 		
 		JButton btnNuevo = new JButton("NUEVO");
+		btnNuevo.setBackground(new Color(30, 144, 255));
 		panelBotones.add(btnNuevo);
 		
 		JButton btnAgregar = new JButton("AGREGAR");
+		btnAgregar.setBackground(new Color(30, 144, 255));
 		panelBotones.add(btnAgregar);
 		
 		JButton btnEditar = new JButton("EDITAR");
+		btnEditar.setBackground(new Color(50, 205, 50));
 		panelBotones.add(btnEditar);
 		
 		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setBackground(new Color(255, 0, 0));
 		panelBotones.add(btnEliminar);
 		
 		JPanel panelContactos = new JPanel();
-		panelContactos.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0), 3), "CONTACTOS", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelContactos.setBackground(Color.LIGHT_GRAY);
+		panelContactos.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 255), 3, true), "CONTACTOS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		contentPane.add(panelContactos);
 		panelContactos.setLayout(new BorderLayout(0, 0));
 		
@@ -153,6 +179,8 @@ public class Agenda extends JFrame {
 		panelContactos.add(scrollPane);
 		
 		JList list = new JList();
+		list.setBorder(new LineBorder(new Color(30, 144, 255), 2, true));
+		list.setBackground(new Color(240, 248, 255));
 		scrollPane.setViewportView(list);
 		
 		modelo = new DefaultListModel<Persona>();
