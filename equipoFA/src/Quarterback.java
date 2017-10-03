@@ -1,8 +1,6 @@
-public class Quarterback extends Ofensivo {
+public class Quarterback {
 
-	WideReceiver recibe;
-
-	public void correoBalon() {
+	public void correrBalon() {
 		// TODO - implement Quarterback.correoBalon
 		throw new UnsupportedOperationException();
 	}
@@ -24,5 +22,7 @@ public class Quarterback extends Ofensivo {
 		// TODO - implement Quarterback.ponerBalon
 		throw new UnsupportedOperationException();
 	}
+
+	Ofensivo linea;
 
 }

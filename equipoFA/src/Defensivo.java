@@ -1,22 +1,17 @@
 public class Defensivo extends Jugador {
 
-	protected void formacion43() {
-		// TODO - implement Defensivo.formacion43
+	public void correr() {
+		// TODO - implement Defensivo.correr
 		throw new UnsupportedOperationException();
 	}
 
-	protected void formacion34() {
-		// TODO - implement Defensivo.formacion34
+	public void bloquear() {
+		// TODO - implement Defensivo.bloquear
 		throw new UnsupportedOperationException();
 	}
 
-	protected void nikelDime() {
-		// TODO - implement Defensivo.nikelDime
-		throw new UnsupportedOperationException();
-	}
-
-	protected void OverAndUnder() {
-		// TODO - implement Defensivo.OverAndUnder
+	public void tomarBalon() {
+		// TODO - implement Defensivo.tomarBalon
 		throw new UnsupportedOperationException();
 	}
 

@@ -1,32 +1,19 @@
 public class Ofensivo extends Jugador {
 
-	protected void proSet() {
-		// TODO - implement Ofensivo.proSet
+	Quarterback integrante;
+
+	public void correr() {
+		// TODO - implement Ofensivo.correr
 		throw new UnsupportedOperationException();
 	}
 
-	protected void shotgun() {
-		// TODO - implement Ofensivo.shotgun
+	public void atraparBalon() {
+		// TODO - implement Ofensivo.atraparBalon
 		throw new UnsupportedOperationException();
 	}
 
-	protected void formacionI() {
-		// TODO - implement Ofensivo.formacionI
-		throw new UnsupportedOperationException();
-	}
-
-	protected void offsetI() {
-		// TODO - implement Ofensivo.offsetI
-		throw new UnsupportedOperationException();
-	}
-
-	protected void singleback() {
-		// TODO - implement Ofensivo.singleback
-		throw new UnsupportedOperationException();
-	}
-
-	protected void goalLine() {
-		// TODO - implement Ofensivo.goalLine
+	public void bloquear() {
+		// TODO - implement Ofensivo.bloquear
 		throw new UnsupportedOperationException();
 	}
 

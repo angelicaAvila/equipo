@@ -13,5 +13,6 @@ public class Jugador extends Persona {
 	public int numero;
 	Entrenador dirije;
 	EquipoF formadoPor;
+	CanchaFA Lugar;
 
 }

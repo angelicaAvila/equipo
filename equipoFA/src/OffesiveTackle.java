@@ -1,2 +1,2 @@
-public class OffesiveTackle extends LineaOfensiva {
+public class OffesiveTackle {
 }
