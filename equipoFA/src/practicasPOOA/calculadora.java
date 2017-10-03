@@ -221,7 +221,7 @@ public class calculadora extends JFrame {
 									break;
 						case 4 :	reg = reg/regD;
 									break;
-						default:	reg = reg;
+						default:	reg = reg*1;
 									break;
 					}
 				}
