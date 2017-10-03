@@ -1,3 +1,4 @@
+package futbolAm;
 public class Ofensivo extends Jugador {
 
 	Quarterback integrante;

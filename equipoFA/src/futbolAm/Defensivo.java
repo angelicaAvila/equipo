@@ -1,3 +1,4 @@
+package futbolAm;
 public class Defensivo extends Jugador {
 
 	public void correr() {

@@ -1,3 +1,4 @@
+package futbolAm;
 public class punter extends Especiales {
 
 	public void despeje() {

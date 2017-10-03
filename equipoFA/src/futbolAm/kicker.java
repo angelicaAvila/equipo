@@ -1,3 +1,4 @@
+package futbolAm;
 public class kicker extends Especiales {
 
 	public void golCampo() {
