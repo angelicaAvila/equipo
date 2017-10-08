@@ -1,9 +1,10 @@
-package controlador;
+package mvc.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import modelo.CalcuOperacion;
-import vista.CalcuInterface;
+
+import mvc.modelo.CalcuOperacion;
+import mvc.vista.CalcuInterface;
 
 public class CalcuControl implements ActionListener{
 

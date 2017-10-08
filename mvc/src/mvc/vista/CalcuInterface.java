@@ -1,4 +1,4 @@
-package vista;
+package mvc.vista;
 
 public interface CalcuInterface {
 

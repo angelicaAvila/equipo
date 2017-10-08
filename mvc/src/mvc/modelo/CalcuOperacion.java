@@ -1,4 +1,4 @@
-package modelo;
+package mvc.modelo;
 
 public class CalcuOperacion {
 	

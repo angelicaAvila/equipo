@@ -1,4 +1,4 @@
-package vista;
+package mvc.vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controlador.CalcuControl;
-import modelo.CalcuOperacion;
+import mvc.controlador.CalcuControl;
+import mvc.modelo.CalcuOperacion;
 
 import javax.swing.JButton;
 import java.awt.GridLayout;
