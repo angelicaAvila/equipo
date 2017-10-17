@@ -153,7 +153,6 @@ public EquipoF() {
 	}
 	
 	public Component getComponentShow() {
-		// TODO Auto-generated method stub
 		return panelCancha;
 	}
 	
@@ -173,6 +172,11 @@ public EquipoF() {
 	public void showCancha() {
 		CardLayout c= (CardLayout)panelJuego.getLayout();
 		c.show(panelJuego, "Cancha");
+		
+	}
+
+	public void setComponentShow(CanchaFA cancha) {
+		panelCancha.actualizar(cancha.getJugadorX(), cancha.getJugadorY());
 		
 	}
 }

@@ -10,13 +10,16 @@ import deporte.modelo.FileManager;
 import deporte.vista.EquipoFInterfaz;
 import deporte.vista.jDialog.AboutDialog;
 import deporte.vista.jDialog.ReglasDialog;
+import deporte.vista.panel.CanchaFA;
 
 public class BotonesControl implements ActionListener {
 
 	FileManager<Component> file;
-	EquipoFInterfaz vista;
-	public BotonesControl(EquipoFInterfaz vista) {
-		this.vista=vista;
+	EquipoFInterfaz EqInt;
+	CanchaFA canchaNew;
+	CanchaFA canchaIni;
+	public BotonesControl(EquipoFInterfaz EqInt) {
+		this.EqInt=EqInt;
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -24,17 +27,17 @@ public class BotonesControl implements ActionListener {
 		switch(type){
 		case "save":
 			JFileChooser seleccion= new JFileChooser();
-			int code=seleccion.showSaveDialog(vista.getComponentShow());
+			int code=seleccion.showSaveDialog(EqInt.getComponentShow());
 			if(code==JFileChooser.APPROVE_OPTION){
 				file=new FileManager<Component>(seleccion.getSelectedFile().getAbsolutePath());
-				file.writeObject(vista.getWriteObject());
+				file.writeObject(EqInt.getWriteObject());
 			}
 			break;
 		case "play":
-			vista.showCancha();
-			vista.setFocusablePlay(false);
-			vista.setFocusablePause(false);
-			vista.setFocusableCancha(true);
+			EqInt.showCancha();
+			EqInt.setFocusablePlay(false);
+			EqInt.setFocusablePause(false);
+			EqInt.setFocusableCancha(true);
 			break;
 		case "acerca":
 			AboutDialog about= new AboutDialog("PRACTICA: INTERFAZ JUEGO");
@@ -45,17 +48,18 @@ public class BotonesControl implements ActionListener {
 			reglas.setVisible(true);
 			break;
 		case "open":
-			/*JFileChooser doc= new JFileChooser();
-			int codigo=doc.showOpenDialog(vista.getComponentShow());
+			//canchaIni = (CanchaFA) EqInt.getComponentShow();
+			JFileChooser doc= new JFileChooser();
+			int codigo=doc.showOpenDialog(EqInt.getComponentShow());
 			if(codigo==JFileChooser.APPROVE_OPTION){
 				file=new FileManager<Component>(doc.getSelectedFile().getAbsolutePath());
-				file.readObject();
-			}*/
+				canchaNew = (CanchaFA) file.readObject();
+				EqInt.setComponentShow(canchaNew);
+				//canchaNew.actualizar(canchaNew.getJugadorX(), canchaNew.getJugadorY());
+			}
 			break;
 	}
 		
 	}
-	
-	
 
 }
