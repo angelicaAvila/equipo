@@ -1,5 +1,4 @@
 package deporte;
-import Package.Persona;
 import deporte.vista.EquipoF;
 import deporte.vista.panel.CanchaFA;
 

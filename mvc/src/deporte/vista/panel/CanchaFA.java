@@ -2,6 +2,9 @@ package deporte.vista.panel;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,6 +13,7 @@ import javax.swing.JPanel;
 import clases.Balon;
 import deporte.Jugador;
 import deporte.controlador.JugadorControl;
+import deporte.modelo.PaqueteDeDatos;
 import deporte.vista.CanchaInterfaz;
 
 public class CanchaFA extends JPanel implements CanchaInterfaz,Runnable{
@@ -17,8 +21,12 @@ public class CanchaFA extends JPanel implements CanchaInterfaz,Runnable{
 	deporte.Jugador Sujeto;
 	private JLabel jugador;
 	private Rectangle cancha;
+	private Socket cliente;
+	private ObjectOutputStream out;
 	
-	public CanchaFA() {
+	
+	public CanchaFA(Socket cliente) {
+		this.cliente = cliente;
 		setLayout(null);
 		jugador = new JLabel();
 		jugador.setIcon(new ImageIcon(Cancha.class.getResource("/imagen/deporte-futbol-icono-6585-16.png")));
@@ -28,6 +36,7 @@ public class CanchaFA extends JPanel implements CanchaInterfaz,Runnable{
 		addKeyListener(cntrl);
 		
 	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		ImageIcon aux= new ImageIcon(Balon.class.getResource("/imagen/cancha2.jpg"));
@@ -48,6 +57,7 @@ public class CanchaFA extends JPanel implements CanchaInterfaz,Runnable{
 		
 		
 	}
+	
 	public Rectangle getCancha(){
 		return cancha;
 	}
@@ -60,8 +70,11 @@ public class CanchaFA extends JPanel implements CanchaInterfaz,Runnable{
 		return jugador.getY();
 	}
 
-	public void actualizar(int x, int y) {
-		jugador.setBounds(x, y, 40, 40);
+	public void actualizar(int x, int y) throws IOException{
+			out = new ObjectOutputStream(cliente.getOutputStream());
+			PaqueteDeDatos pack = new PaqueteDeDatos(x, y, "ACTUALIZAR");
+			out.writeObject(pack);
+			jugador.setBounds(x, y, 40, 40);
 	}
 
 	public void run() {
@@ -69,4 +82,10 @@ public class CanchaFA extends JPanel implements CanchaInterfaz,Runnable{
 		addKeyListener(control);
 
 	}
+
+	@Override
+	public JLabel getJugador() {
+		return jugador;
+	}
+
 }

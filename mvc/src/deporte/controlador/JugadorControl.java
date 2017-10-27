@@ -2,6 +2,7 @@ package deporte.controlador;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 import deporte.modelo.Jugadores;
 import deporte.vista.CanchaInterfaz;
@@ -38,7 +39,12 @@ public class JugadorControl extends KeyAdapter {
 			break;
 		}
 		player=player.mover(vista.getCancha(),left, right, up, down);
-		vista.actualizar(player.getX(),player.getY());
+		try {
+			vista.actualizar(player.getX(),player.getY());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 	
 	public void keyReleased(KeyEvent e){

@@ -56,4 +56,10 @@ public class Cancha extends JPanel implements CanchaInterfaz{
 		
 	}
 
+	@Override
+	public JLabel getJugador() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -1,4 +1,4 @@
-package Package;
+package deporte;
 
 public class Persona {
 
