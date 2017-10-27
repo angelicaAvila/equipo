@@ -41,7 +41,7 @@ public class Servidor extends JFrame implements Runnable{
 					e.printStackTrace();
 				}
 			}
-		});
+		}); 
 	}
 
 	public Servidor() {

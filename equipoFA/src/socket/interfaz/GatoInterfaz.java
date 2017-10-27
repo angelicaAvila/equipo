@@ -18,6 +18,6 @@ public interface GatoInterfaz {
 	public void setValor(int x,int valor);
 	public int getValor(int x);
 	
-	
+	 
 
 }

@@ -16,7 +16,7 @@ public class Gatoxy implements Serializable{
 	}
 	
 	public int getN() {
-		return n;
+		return n; 
 	}
 
 	public void setN(int n) {

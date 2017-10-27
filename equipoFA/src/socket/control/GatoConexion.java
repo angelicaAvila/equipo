@@ -23,7 +23,7 @@ public class GatoConexion implements Runnable{
 		this.gatoI = gatoI;
 		t = new Thread(this);
 		t.start();
-	}
+	} 
 
 	public void run() {
 		while(true) {

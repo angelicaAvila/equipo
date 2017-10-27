@@ -27,7 +27,7 @@ public class GatoControlBotones implements ActionListener{
 							about.setVisible(true);
 							break;
 		case "fin"		:	gatoI.finalizar();
-							break;
+							break; 
 				
 		}
 	}

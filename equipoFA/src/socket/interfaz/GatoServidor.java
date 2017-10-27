@@ -50,7 +50,7 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
+			} 
 		});
 	}
 	

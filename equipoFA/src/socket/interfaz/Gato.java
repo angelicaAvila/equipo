@@ -49,7 +49,7 @@ public class Gato extends JFrame implements GatoInterfaz,Runnable{
 					Gato frame = new Gato();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					e.printStackTrace(); 
 				}
 			}
 		});

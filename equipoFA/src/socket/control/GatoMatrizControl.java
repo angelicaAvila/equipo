@@ -36,6 +36,7 @@ public class GatoMatrizControl implements ActionListener{
 		if(res>0) {
 			JOptionPane.showMessageDialog((Component) gatoI, "Ha ganado el jugador "+( res==1?"CLIENTE":"SERVIDOR"), "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(Gato.class.getResource("/imagen/wizard1-icono-5752-48.png")));
 			gatoI.getBtnJuegoN().doClick();
+			
 		}
 	}
 }
