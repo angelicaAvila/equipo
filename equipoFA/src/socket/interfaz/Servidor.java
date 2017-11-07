@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,6 +31,7 @@ public class Servidor extends JFrame implements Runnable{
 	private JTextArea txtMensajes;
 	private JTextField txtMsg;
 	private Socket cliente;
+	private ArrayList<Socket> listaClientes;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -69,11 +71,13 @@ public class Servidor extends JFrame implements Runnable{
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					ObjectOutputStream out = new ObjectOutputStream(cliente.getOutputStream());
 					String name = "Servidor";
 					String mensaje = txtMsg.getText();
 					Persona p = new Persona(name, mensaje);
-					out.writeObject(p);
+					for(Socket item: listaClientes) {
+						ObjectOutputStream out = new ObjectOutputStream(item.getOutputStream());
+						out.writeObject(p);
+					}	
 					txtMensajes.append("\nServidor: "+mensaje);
 					txtMsg.setText("");
 				} catch (Exception e) {
@@ -85,6 +89,7 @@ public class Servidor extends JFrame implements Runnable{
 		
 		Thread t = new Thread(this);
 		t.start();
+		listaClientes = new ArrayList<>();
 	}
 
 	public JTextArea getTxtMensajes() {
@@ -100,12 +105,10 @@ public class Servidor extends JFrame implements Runnable{
 			ServerSocket servidor = new ServerSocket(8000);
 			while(true) {
 				cliente =  servidor.accept();
-				ClienteNuevo cn = new ClienteNuevo(cliente,this);
+				listaClientes.add(cliente);
+				ClienteNuevo cn = new ClienteNuevo(cliente,this,listaClientes);
 				Thread t = new Thread(cn);
 				t.start();
-				//DataInputStream input = new DataInputStream (cliente.getInputStream());
-				//String mensaje = input.readUTF();
-				//txtMensajes.append("\n"+mensaje);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

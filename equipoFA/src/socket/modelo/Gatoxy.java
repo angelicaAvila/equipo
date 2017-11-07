@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class Gatoxy implements Serializable{
 	private int turno;
 	private int n; 
-	private int m;
+	private int x;
 	private String tipo;
 	
-	public Gatoxy(int turno,int m,int n,String tipo) {
+	public Gatoxy(int turno,int x,int n,String tipo) {
 		this.n = n;
-		this.m = m;
+		this.x = x;
 		this.tipo=tipo;	
 		this.turno=turno; 
 	}
@@ -23,12 +23,12 @@ public class Gatoxy implements Serializable{
 		this.n = n;
 	}
 
-	public int getM() {
-		return m;
+	public int getX() {
+		return x;
 	}
 
-	public void setM(int m) {
-		this.m = m;
+	public void setX(int m) {
+		this.x = m;
 	}
 
 	public String getTipo() {

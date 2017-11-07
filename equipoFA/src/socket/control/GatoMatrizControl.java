@@ -26,17 +26,26 @@ public class GatoMatrizControl implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		turno = gxy.getTurno();
-		valor = turno;
 		String opc = e.getActionCommand();
 		x = Integer.parseInt(opc);
+		turno = gxy.getTurno();
+		System.out.println(turno);
+		valor = turno;
 		gxy.setTurno(turno==1?2:1);
-		gatoI.actualizar(turno,x,valor,"ACTUALIZAR");
+		gatoI.actualizar(gxy.getTurno(),x,valor);
+		gatoI.habilitarBotones(false);
+		try {
+			out = new ObjectOutputStream(cliente.getOutputStream());
+			Gatoxy pack = new Gatoxy(gxy.getTurno(),x,valor,"ACTUALIZAR");
+			out.writeObject(pack);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
 		int res = gatoI.resultado();
 		if(res>0) {
-			JOptionPane.showMessageDialog((Component) gatoI, "Ha ganado el jugador "+( res==1?"CLIENTE":"SERVIDOR"), "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(Gato.class.getResource("/imagen/wizard1-icono-5752-48.png")));
+			JOptionPane.showMessageDialog((Component) gatoI, "Ha ganado el jugador: "+( res==1?"CLIENTE":"SERVIDOR"), "GANADOR", JOptionPane.OK_OPTION,new ImageIcon(Gato.class.getResource("/imagen/wizard1-icono-5752-48.png")));
 			gatoI.getBtnJuegoN().doClick();
-			
 		}
 	}
 }

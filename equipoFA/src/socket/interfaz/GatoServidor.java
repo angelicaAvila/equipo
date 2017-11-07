@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 import socket.control.GatoConexion;
 import socket.control.GatoControlBotones;
 import socket.control.GatoMatrizControl;
+import socket.control.ServidorConexion;
 import socket.modelo.Gatoxy;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -56,7 +57,8 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 	
 	public GatoServidor() throws IOException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GatoServidor.class.getResource("/imagen/servidor-icono-7515-32.png")));
-		servidor = new ServerSocket(8000); 
+		servidor = new ServerSocket(8000);
+		ServidorConexion sc = new ServidorConexion (this,servidor);
 		init();
 		Thread t = new Thread(this);
 		t.start();
@@ -64,7 +66,7 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 	public void init() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("TicTacToe (Servidor)");
-		setBounds(100, 100, 375, 416);
+		setBounds(575, 100, 375, 416);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -130,6 +132,7 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 					outD.writeUTF("DESCONECTADO");
 					cliente.close();
 					servidor.close();
+					System.exit(0);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -201,18 +204,7 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			try {
-				in = new DataInputStream(cliente.getInputStream());
-				String mensaje = in.readUTF();
-				if(mensaje.equals("DESCONECTADO")) {
-					JOptionPane.showMessageDialog(this, "EL CLIENTE SE HA DESCONECTADO","CIERRE DE SESION",JOptionPane.INFORMATION_MESSAGE);
-					cliente.close();
-					System.exit(0);
-				}
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			
 		}
 		
 	}
@@ -242,18 +234,19 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 		m[x]=valor;
 	}
 
-	public void actualizar(int turno, int x ,int valor, String tipo) {
-		try {
-			out = new ObjectOutputStream(cliente.getOutputStream());
-			Gatoxy pack = new Gatoxy(turno,x,valor,tipo);
-			out.writeObject(pack);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+	public void actualizar(int turno, int x ,int valor) {
+		setSenalTurno(turno);
 		m[x]=valor;
 		setIcono(valor,x);
 		boton[x].setDisabledIcon(boton[x].getIcon());
-		boton[x].setEnabled(false);
+	}
+
+	public void habilitarBotones(boolean sn) {
+		for(int i = 0; i < 9; i++) {
+			//if(getValor(i)==0)
+			boton[i].setEnabled(sn);
+		}
+		
 	}
 	
 	

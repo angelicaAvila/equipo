@@ -33,6 +33,7 @@ public class EquipoServidor  extends JFrame implements EquipoFInterfaz,Runnable{
 	private JPanel panelBoton;
 	private JButton btnDesconectar;
 	private DataOutputStream out;
+	private boolean activo;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -49,6 +50,7 @@ public class EquipoServidor  extends JFrame implements EquipoFInterfaz,Runnable{
 	public EquipoServidor() throws IOException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(EquipoServidor.class.getResource("/imagen/servidor-icono-7515-32.png")));
 		servidor = new ServerSocket(8000); 
+		activo = true;
 		init();
 		Thread t = new Thread(this);
 		t.start();
@@ -95,8 +97,10 @@ public class EquipoServidor  extends JFrame implements EquipoFInterfaz,Runnable{
 				try {
 					out = new DataOutputStream(cliente.getOutputStream());
 					out.writeUTF("DESCONECTADO");
+					activo = false;
 					cliente.close();
 					servidor.close();
+					//System.exit(0);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -141,9 +145,11 @@ public class EquipoServidor  extends JFrame implements EquipoFInterfaz,Runnable{
 	}
 
 	public void run() {
-		while(true) {
+		while(activo) {
 			try {
+				System.out.println("Servidor : Esperando cliente");
 				cliente = servidor.accept();
+				System.out.println("Servidor : CLIENTE ACEPTADO");
 				ClienteConexion cc = new ClienteConexion (this,cliente, panelCancha);
 			} catch (Exception e) {
 				e.printStackTrace();

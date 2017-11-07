@@ -34,13 +34,12 @@ public class Gato extends JFrame implements GatoInterfaz,Runnable{
 	private JPanel panel;
 	private int m[]= new int[9];
 	private ObjectOutputStream out;
-	
 	public Socket cliente;
 	public DataInputStream in;
 	private GatoMatrizControl gmc;
 	private GatoControlBotones gcb;
-	public ServerSocket servidor;
 	public DataOutputStream outD;
+	public boolean activo;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -58,6 +57,7 @@ public class Gato extends JFrame implements GatoInterfaz,Runnable{
 	public Gato() throws IOException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Gato.class.getResource("/imagen/gato-icono-8065-48.png")));
 		cliente = new Socket("127.0.0.1",8000);
+		activo = true;
 		init();
 		Thread t = new Thread(this);
 		t.start();
@@ -187,31 +187,22 @@ public class Gato extends JFrame implements GatoInterfaz,Runnable{
 		int action = JOptionPane.showConfirmDialog(contentPane, "Seguro que deseas salir?", "SALIDA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,new ImageIcon(Gato.class.getResource("/imagen/dejar-de-amarillo-icono-6551-48.png")));
 		if(action == JOptionPane.YES_OPTION) {
 			try {
-				outD = new DataOutputStream(cliente.getOutputStream());
-				outD.writeUTF("DESCONECTADO");
-				System.exit(0);
-				cliente.close();
-				servidor.close();
+				out = new ObjectOutputStream(cliente.getOutputStream());
+				Gatoxy pack = new Gatoxy(0,0,0,"FINALIZAR");
+				out.writeObject(pack);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
 		}		
 	}
-	public void actualizar(int turno, int x , int valor, String tipo) {
-		try {
-			out = new ObjectOutputStream(cliente.getOutputStream());
-			Gatoxy pack = new Gatoxy(turno,x,valor,tipo);
-			out.writeObject(pack);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+	public void actualizar(int turno, int x , int valor) {
+		setSenalTurno(turno);
 		m[x]=valor;
 		setIcono(valor,x);
 		boton[x].setDisabledIcon(boton[x].getIcon());
-		boton[x].setEnabled(false);
-		setSenalTurno(turno);
 	}
+	
 	public int getValor(int x) {
 		return m[x];
 	}
@@ -234,19 +225,32 @@ public class Gato extends JFrame implements GatoInterfaz,Runnable{
 			return -1;
 	}
 	public void run() {
-		try {
-			in = new DataInputStream(cliente.getInputStream());
-			String mensaje = in.readUTF();
-			if(mensaje.equals("DESCONECTADO")) {
-				JOptionPane.showMessageDialog(this, "EL SERVIDOR SE HA DESCONECTADO","CIERRE DE SESION",JOptionPane.INFORMATION_MESSAGE);
-				cliente.close();
-				System.exit(0);
+		while(activo) {
+			try {
+				in = new DataInputStream(cliente.getInputStream());
+				String mensaje = in.readUTF();
+				if(mensaje.equals("DESCONECTADO")) {
+					JOptionPane.showMessageDialog(this, "EL SERVIDOR SE HA DESCONECTADO","CIERRE DE SESION",JOptionPane.INFORMATION_MESSAGE);
+					cliente.close();
+					System.exit(0);
+				}
+			} catch (IOException e) {
+				activo = false;
+				e.printStackTrace();
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		
 	}
+
+	
+	public void habilitarBotones(boolean sn) {
+		for(int i = 0; i < 9; i++) {
+			//if(getValor(i)==0)
+			boton[i].setEnabled(sn);
+		}
+		
+	}
+
 	
 }
 

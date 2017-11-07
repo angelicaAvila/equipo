@@ -181,8 +181,10 @@ public class EquipoF extends JFrame implements EquipoFInterfaz, Runnable{
 	public void run() {
 		try {
 			in = new DataInputStream(cliente.getInputStream());
+			System.out.println("CLIENTE: Esperando mensaje");
 			String mensaje = in.readUTF();
 			if(mensaje.equals("DESCONECTADO")) {
+				System.out.println("CLIENTE: DESCONECTANDO");
 				JOptionPane.showMessageDialog(this, "EL SERVIDOR SE HA DESCONECTADO","CIERRE DE SESION",JOptionPane.INFORMATION_MESSAGE);
 				cliente.close();
 				System.exit(0);
