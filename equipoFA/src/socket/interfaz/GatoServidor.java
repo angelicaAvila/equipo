@@ -58,7 +58,6 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 	public GatoServidor() throws IOException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GatoServidor.class.getResource("/imagen/servidor-icono-7515-32.png")));
 		servidor = new ServerSocket(8000);
-		ServidorConexion sc = new ServidorConexion (this,servidor);
 		init();
 		Thread t = new Thread(this);
 		t.start();
@@ -66,7 +65,7 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 	public void init() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("TicTacToe (Servidor)");
-		setBounds(575, 100, 375, 416);
+		setBounds(600, 100, 375, 416);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(32, 178, 170));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -139,7 +138,7 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 			}
 		});
 		panel.add(btnFin);
-		
+		iniciar();
 		
 	}
 	public void setIcono(int imagen, int n) {
@@ -201,6 +200,7 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 			try {
 				cliente = servidor.accept();
 				GatoConexion gc = new GatoConexion (this,cliente);
+				ServidorConexion sc = new ServidorConexion (this,servidor);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -208,21 +208,12 @@ public class GatoServidor extends JFrame implements GatoInterfaz,Runnable{
 		}
 		
 	}
-	@Override
 	public void iniciar() {
-		try {
-			out = new ObjectOutputStream(cliente.getOutputStream());
-			Gatoxy pack = new Gatoxy(1, 0, 0, "INICIAR");
-			out.writeObject(pack);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
 		setSenalTurno(1);
 		for(int i=0; i<9;i++) {
 			boton[i].setIcon(null);
 			boton[i].setEnabled(true);
 			m[i]=0;
-			
 		}
 		
 	}

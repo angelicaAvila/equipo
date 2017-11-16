@@ -134,6 +134,7 @@ public class Gato extends JFrame implements GatoInterfaz,Runnable{
 		btnFin.setFont(new Font("Arial", Font.BOLD, 16));
 		panel.add(btnFin);
 		
+		iniciar();
 		
 	}
 		
@@ -168,17 +169,10 @@ public class Gato extends JFrame implements GatoInterfaz,Runnable{
 	}
 
 	public void iniciar() {
-		try {
-			out = new ObjectOutputStream(cliente.getOutputStream());
-			Gatoxy pack = new Gatoxy(1, 0, 0, "INICIAR");
-			out.writeObject(pack);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
 		setSenalTurno(1);
 		for(int i=0; i<9;i++) {
 			boton[i].setIcon(null);
-			boton[i].setEnabled(true);
+			boton[i].setEnabled(false);
 			m[i]=0;
 			
 		}

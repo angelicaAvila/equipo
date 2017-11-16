@@ -31,13 +31,11 @@ public class ServidorConexion implements Runnable{
 		t = new Thread(this);
 		t.start();
 	} 
-
-
 	
 	public void run() {
 		while(activo) {
 			try {
-				in = new ObjectInputStream(cliente.getInputStream());
+				in = new ObjectInputStream(cliente.getInputStream()); 
 				Gatoxy datos = (Gatoxy) in.readObject();
 				String tipo = datos.getTipo();
 				System.out.println("sc = "+ tipo);
@@ -69,7 +67,7 @@ public class ServidorConexion implements Runnable{
 						System.exit(0);
 						cliente.close();
 					} catch (IOException e) {
-						activo = true;
+						activo = false;
 						e.printStackTrace();
 					}
 				}
