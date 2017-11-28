@@ -18,7 +18,7 @@ public class Display extends JFrame{
 		this.ancho = ancho;
 		this.alto = alto;
 		this.titulo = titulo;
-		init();
+		//init();
 	}
 
 	public int getAncho() {
@@ -53,19 +53,6 @@ public class Display extends JFrame{
 		this.canvas = canvas;
 	}
 
-	public void init() {
-		setSize(ancho, alto);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Display.class.getResource("/imagen/los-jugadores-jovenes-icono-6231-32.png")));
-		setTitle(titulo);
-		setResizable(false);
-		setVisible(true);
-		setLocationRelativeTo(null);
-		
-		canvas = new Canvas();
-		canvas.setSize(ancho, alto);
-		add(canvas);
-		pack();
-	}
+
 
 }
